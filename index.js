@@ -240,7 +240,7 @@ function verifyPoints(player, fruit) {
 console.log("start");
 
 let player1 = new Player(
-    "Adam",
+    "Player 1",
     "black",
     GameMathModule().generateRandomPosition(),
     GameMathModule().generateRandomPosition(),
@@ -248,7 +248,7 @@ let player1 = new Player(
 );
 
 let player2 = new Player(
-    "Teodoro",
+    "Player 2",
     "white",
     GameMathModule().generateRandomPosition(),
     GameMathModule().generateRandomPosition(),
