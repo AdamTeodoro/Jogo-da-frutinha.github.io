@@ -9,8 +9,5 @@
 ## FRUTA - COR VERDE;
 
 # CONTROLES
-## 1 TECLAS DE MOVIMENTAÇÃO DO PLAYER 1: cima, baixo, esquerda, direita.
-## 2 TECLAS DE MOVIMENTAÇÃO DO PLAYER 2: 'W', 'A', 'S', 'D';
-
-
-
+## 1 TECLAS DE MOVIMENTAÇÃO DO PLAYER 1: 'cima', 'baixo', 'esquerda', 'direita'.
+## 2 TECLAS DE MOVIMENTAÇÃO DO PLAYER 2: 'W', 'A', 'S', 'D'.
