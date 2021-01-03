@@ -245,7 +245,7 @@ let player1 = new Player(
     GameMathModule().generateRandomPosition(),
     GameMathModule().generateRandomPosition(),
     1
-);
+); 
 
 let player2 = new Player(
     "Player 2",
