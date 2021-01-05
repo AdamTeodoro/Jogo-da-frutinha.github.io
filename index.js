@@ -1,3 +1,4 @@
+
 /**
  * Módulo para calculos e geração de números pseudoaleatórios
  */
@@ -156,6 +157,7 @@ function Player(
 
     }
 }
+
 /**
  * Recebe os jogadores e mapeia os controles executa uma função de um player quando
  * uma tecla é pressionada.
@@ -265,6 +267,7 @@ function FruitModule(timeP) {
         timeOut,
     }
 }
+
 /**
  * Verifica se a posição do player no mapa é igual a posição da frutinha e incrementa o score ou
  * reseta a pontuação se o score de um dos jogadores for 100 pontos e exibe a mensagem avisando
@@ -284,9 +287,7 @@ function verifyPoints(player, fruit) {
             player2.resetScore();
             player1.resetScore();
         }
-        
     }
-
 }
 
 console.log("Game start");
@@ -320,6 +321,7 @@ document.addEventListener('keyup', (event) => {
         control[event.key]();
     } catch {
     }
+    
     verifyPoints(player1, fruit);
     verifyPoints(player2, fruit);
 
