@@ -290,6 +290,26 @@ function verifyPoints(player, fruit) {
     }
 }
 
+function readDoc() {
+    alert(`
+        # JOGO DA FRUTINHA\n
+
+        # OBJETIVO\n
+        ## 1 - ATINGIR 100 PONTOS COLETANDO FRUTAS, SENDO 10 PONTOS CADA.
+        \n
+        \n
+        # CORES\n
+        ## PLAYER 1 - COR PRETA;\n
+        ## PLAYER 2 - COR BRANCA;\n
+        ## FRUTA - COR VERDE;
+        \n
+        \n
+        # CONTROLES\n
+        ## 1 TECLAS DE MOVIMENTAÇÃO DO PLAYER 1: 'cima', 'baixo', 'esquerda', 'direita'.\n
+        ## 2 TECLAS DE MOVIMENTAÇÃO DO PLAYER 2: 'W', 'A', 'S', 'D'.\n
+    `);
+}
+
 console.log("Game start");
 
 let player1 = new Player(
