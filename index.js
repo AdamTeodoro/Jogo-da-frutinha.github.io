@@ -348,7 +348,6 @@ document.addEventListener('keyup', (event) => {
     try {
         controlP1[event.key]();
         verifyPoints(player1, fruit);
-    } catch (error) {
-        console.log(error);
+    } catch {
     }
 }); 
