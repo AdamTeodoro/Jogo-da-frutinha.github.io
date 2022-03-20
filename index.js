@@ -291,7 +291,7 @@ function readDoc() {
         \n
         <h2>CORES\n</h2>
         <h3>PLAYER 1 - COR PRETA;\n</h3>
-        <h3>PLAYER 2 - COR BRANCA;\n</h3>
+        <h3>PLAYER 2 - COR CINZA;\n</h3>
         <h3>FRUTINHA - COR VERMELHA;</h3>
         \n
         \n
