@@ -10,7 +10,7 @@ function GameMathModule() {
 }
 
 /**
- * 
+ *
  * Função para criação do player
  * 
  * @param {*} name - nome do jogador
@@ -65,7 +65,8 @@ function Player(
     }
     
     /**
-     * Zera a pontuação do jogador quando a função é acionada e também atualiza no template;
+     * Zera a pontuação do jogador quando a função é acionada e também 
+     * atualiza no template;
      */
     function resetScore() {
         score = 0;
@@ -159,46 +160,32 @@ function Player(
 }
 
 /**
- * Recebe os jogadores e mapeia os controles executa uma função de um player quando
- * uma tecla é pressionada.
+ * Executa a função de um player quando uma tecla é pressionada.
  * 
- * @param {*} player1 - Classe do tipo jogador
- * @param {*} player2 - Classe do tipo jogador
+ * @param {*} player - Classe do tipo jogador
+ * @param {string} keyMoveRight - Botão que fará o player se mover para direita
+ * @param {string} keyMoveLeft - Botão que fará o player se mover para esquerda
+ * @param {string} keyMoveUp - Botão que fará o player se mover para cima
+ * @param {string} keyMoveDown - Botão que fará o player se mover para baixo
  */
-function ControllModule(player1, player2) {
+ function ControllModule(player, keyMoveRight, keyMoveLeft, keyMoveUp, keyMoveDown) {
     try {
         return {
-            "ArrowRight": () => {
-                player1.moveRight();
+            [keyMoveRight]: () => {
+                player.moveRight();
             },
 
-            "ArrowLeft": () => {
-                player1.moveLeft();
+            [keyMoveLeft]: () => {
+                player.moveLeft();
             },
 
-            "ArrowUp": () => {
-                player1.moveUp();
+            [keyMoveUp]: () => {
+                player.moveUp();
             },
 
-            "ArrowDown": () => {
-                player1.moveDown();
+            [keyMoveDown]: () => {
+                player.moveDown();
             },
-
-            "w": () => {
-                player2.moveUp();
-            },
-
-            "a": () => {
-                player2.moveLeft();
-            },
-
-            "s": () => {
-                player2.moveDown();
-            },
-
-            "d": () => {
-                player2.moveRight();
-            }
         }
     } catch(error) {
         return;
@@ -206,11 +193,11 @@ function ControllModule(player1, player2) {
 }
 
 /**
- * Módulo de criação da frutinha no jogo, exibe em uma posição aleatória
- * no mapa.
+ * Módulo de criação da frutinha no jogo, inicia o contador 
+ * de tempo que define o tempo em que a frutinha ficará desenhada na tela
  *
- * @param {*} timeP - Tempo de exibição da frutinha, quando o tempo é esgotado a 
- * frutinha recebe uma nova posição
+ * @param {*} timeP - Tempo de exibição da frutinha, quando 
+ * o tempo é esgotado a frutinha recebe uma nova posição
  */
 function FruitModule(timeP) {
     let time = timeP;
@@ -269,9 +256,10 @@ function FruitModule(timeP) {
 }
 
 /**
- * Verifica se a posição do player no mapa é igual a posição da frutinha e incrementa o score ou
- * reseta a pontuação se o score de um dos jogadores for 100 pontos e exibe a mensagem avisando
- * quem venceu!
+ * Verifica se a posição do player no mapa é igual a posição 
+ * da frutinha e incrementa o score ou reseta a pontuação se
+ * o score de um dos jogadores for 100 pontos e exibe a 
+ * mensagem avisando quem venceu!
  */
 function verifyPoints(player, fruit) {
 
@@ -291,36 +279,35 @@ function verifyPoints(player, fruit) {
 }
 
 function readDoc() {
-    alert(`
-        # JOGO DA FRUTINHA\n
+    //pegando elemento
+    const howToPlayElement = document.getElementById('how-to-play');
+    //inserindo html e contexto ao elemento
+    howToPlayElement.innerHTML = `
+        <h1>JOGO DA FRUTINHA</h1>\n
 
-        # OBJETIVO\n
-        ## 1 - ATINGIR 100 PONTOS COLETANDO FRUTAS, SENDO 10 PONTOS CADA.
+        <h2>OBJETIVO\n</h2>
+        <h3> 1 - ATINGIR 100 PONTOS COLETANDO FRUTINHAS PELO MAPA, SENDO 10 PONTOS CADA.</h3>
         \n
         \n
-        # CORES\n
-        ## PLAYER 1 - COR PRETA;\n
-        ## PLAYER 2 - COR BRANCA;\n
-        ## FRUTA - COR VERDE;
+        <h2>CORES\n</h2>
+        <h3>PLAYER 1 - COR PRETA;\n</h3>
+        <h3>PLAYER 2 - COR BRANCA;\n</h3>
+        <h3>FRUTINHA - COR VERMELHA;</h3>
         \n
         \n
-        # CONTROLES\n
-        ## 1 TECLAS DE MOVIMENTAÇÃO DO PLAYER 1: 'cima', 'baixo', 'esquerda', 'direita'.\n
-        ## 2 TECLAS DE MOVIMENTAÇÃO DO PLAYER 2: 'W', 'A', 'S', 'D'.\n
-    `);
+        <h2>CONTROLES\n</h2>
+        <h3>1 TECLAS DE MOVIMENTAÇÃO DO PLAYER 1: 'cima', 'baixo', 'esquerda', 'direita'.\n</h3>
+        <h3>2 TECLAS DE MOVIMENTAÇÃO DO PLAYER 2: 'W', 'A', 'S', 'D'.\n</h3>
+    `;
+    howToPlayElement.style.display = "block";
+    //esconder botão
+    const btnElement = document.getElementById("btn");
+    btnElement.style.display = "none";
 }
 
-console.log("Game start");
 
-let player1 = new Player(
-    "Player 1",
-    "black",
-    GameMathModule().generateRandomPosition(),
-    GameMathModule().generateRandomPosition(),
-    1
-); 
 
-let player2 = new Player(
+const player2 = new Player(
     "Player 2",
     "white",
     GameMathModule().generateRandomPosition(),
@@ -328,21 +315,40 @@ let player2 = new Player(
     2
 );
 
+const player1 = new Player(
+    "Player 1",
+    "black",
+    GameMathModule().generateRandomPosition(),
+    GameMathModule().generateRandomPosition(),
+    1
+); 
+
 let fruit = new FruitModule(5000);
 
-let control = ControllModule(player1, player2);
+const controlP2 = ControllModule(player2, 'd', 'a', 'w', 's');
+const controlP1 = ControllModule(player1, 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown');
+
+console.log("Game start");
 
 /**
- * Acionando o Módulo de controles ao soltar uma tecla
+ * Inicia o observador dos controles do player 2
  */
 document.addEventListener('keyup', (event) => {
-    
     try {
-        control[event.key]();
+        controlP2[event.key.toLocaleLowerCase()]();
+        verifyPoints(player2, fruit);
     } catch {
     }
-    
-    verifyPoints(player1, fruit);
-    verifyPoints(player2, fruit);
-
 });
+
+/**
+ * Inicia o observador dos controles do player 1
+ */
+document.addEventListener('keyup', (event) => {
+    try {
+        controlP1[event.key]();
+        verifyPoints(player1, fruit);
+    } catch (error) {
+        console.log(error);
+    }
+}); 
