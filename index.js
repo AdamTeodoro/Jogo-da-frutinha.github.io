@@ -205,7 +205,7 @@ function FruitModule(timeP) {
     let styleFruit = document.getElementById('fruit').style;
     let posX = GameMathModule().generateRandomPosition();
     let posY = GameMathModule().generateRandomPosition();
-    let timeOut = undefined; // timer da frutinha
+    let timeOut = 0; // timer da frutinha
     
     /**
      * Inicia a frutinha com uma posição aleatória no mapa e 
@@ -215,10 +215,11 @@ function FruitModule(timeP) {
         setPosX(GameMathModule().generateRandomPosition());
         setPosY(GameMathModule().generateRandomPosition());
 
+        clearTimeout(timeOut);
         timeOut = setTimeout(() => {
-            clearTimeout(timeOut);
             startFruit();
         }, time);
+        console.log(timeOut);
     }
     
     /**
@@ -264,7 +265,7 @@ function FruitModule(timeP) {
 function verifyPoints(player, fruit) {
 
     if (player.getPosX() === fruit.getPosX() && player.getPosY() === fruit.getPosY()) {
-        
+        //increment score
         player.incrementScore();
         clearTimeout(fruit.timeOut);
         fruit.startFruit();
@@ -304,8 +305,6 @@ function readDoc() {
     const btnElement = document.getElementById("btn");
     btnElement.style.display = "none";
 }
-
-
 
 const player2 = new Player(
     "Player 2",
@@ -350,4 +349,4 @@ document.addEventListener('keyup', (event) => {
         verifyPoints(player1, fruit);
     } catch {
     }
-}); 
+});
