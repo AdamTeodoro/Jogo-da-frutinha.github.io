@@ -219,7 +219,6 @@ function FruitModule(timeP) {
         timeOut = setTimeout(() => {
             startFruit();
         }, time);
-        console.log(timeOut);
     }
     
     /**
@@ -327,7 +326,7 @@ let fruit = new FruitModule(5000);
 const controlP2 = ControllModule(player2, 'd', 'a', 'w', 's');
 const controlP1 = ControllModule(player1, 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown');
 
-console.log("Game start");
+console.log("Desenvolvido por: Adam Teodoro");
 
 /**
  * Inicia o observador dos controles do player 2
