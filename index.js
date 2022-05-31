@@ -3,7 +3,6 @@
  * Módulo para calculos e geração de números pseudoaleatórios
  */
 function GameMathModule() {
-
     return {
         generateRandomPosition: () => ((Math.floor(Math.random() * 60) * 10) + 10),
     }
