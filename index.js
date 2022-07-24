@@ -1,4 +1,6 @@
-
+const bgElement = document.getElementById("bg");
+const bgHeight = bgElement.offsetHeight;
+const bgWidth = bgElement.offsetWidth;
 /**
  * Módulo para calculos e geração de números pseudoaleatórios
  */
@@ -118,7 +120,7 @@ function Player(
          */
         moveLeft: () => {
             if (posX < 20) {
-                return setPosX(600);
+                return setPosX(bgWidth);
             }
             setPosX(posX -= 10);
         },
@@ -127,7 +129,7 @@ function Player(
          * Decrementa 10px na posição X
          */
         moveRight: () => {
-            if (posX > 590) {
+            if (posX > bgWidth - 10) {
                 return setPosX(10);
             }
             setPosX(posX += 10);
@@ -138,7 +140,7 @@ function Player(
          */
         moveUp: () => {
             if (posY < 20) {
-                return setPosY(600);
+                return setPosY(bgHeight);
             }
             setPosY(posY -= 10);
         },
@@ -147,7 +149,7 @@ function Player(
          * Decrementa 10px na posição Y
          */
         moveDown: () => {
-            if (posY > 590) {
+            if (posY > bgHeight - 10) {
                 return setPosY(10);
             }
             setPosY(posY += 10);
