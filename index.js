@@ -1,12 +1,14 @@
 const bgElement = document.getElementById("bg");
 const bgHeight = bgElement.offsetHeight;
 const bgWidth = bgElement.offsetWidth;
+
 /**
  * Módulo para calculos e geração de números pseudoaleatórios
  */
 function GameMathModule() {
     return {
-        generateRandomPosition: () => ((Math.floor(Math.random() * 60) * 10) + 10),
+        generateRandomPositionX: () => ((Math.floor(Math.random() * bgWidth - 10)) + 15),
+        generateRandomPositionY: () => ((Math.floor(Math.random() * bgHeight - 10)) + 15)
     }
 }
 
@@ -204,8 +206,8 @@ function FruitModule(timeP) {
     let time = timeP;
 
     let styleFruit = document.getElementById('fruit').style;
-    let posX = GameMathModule().generateRandomPosition();
-    let posY = GameMathModule().generateRandomPosition();
+    let posX = GameMathModule().generateRandomPositionX();
+    let posY = GameMathModule().generateRandomPositionY();
     let timeOut = 0; // timer da frutinha
     
     /**
@@ -213,8 +215,8 @@ function FruitModule(timeP) {
      * inicia a contagem do timeP
      */
     function startFruit() {
-        setPosX(GameMathModule().generateRandomPosition());
-        setPosY(GameMathModule().generateRandomPosition());
+        setPosX(GameMathModule().generateRandomPositionX());
+        setPosY(GameMathModule().generateRandomPositionY());
 
         clearTimeout(timeOut);
         timeOut = setTimeout(() => {
@@ -264,7 +266,12 @@ function FruitModule(timeP) {
  */
 function verifyPoints(player, fruit) {
 
-    if (player.getPosX() === fruit.getPosX() && player.getPosY() === fruit.getPosY()) {
+    if (
+        player.getPosX() + 5 >= fruit.getPosX() &&
+        player.getPosX() + 5 <= fruit.getPosX() + 10 &&
+        player.getPosY() + 5 >= fruit.getPosY() &&
+        player.getPosY() + 5 <= fruit.getPosY() + 10
+    ) {
         //increment score
         player.incrementScore();
         clearTimeout(fruit.timeOut);
@@ -309,16 +316,16 @@ function readDoc() {
 const player2 = new Player(
     "Player 2",
     "white",
-    GameMathModule().generateRandomPosition(),
-    GameMathModule().generateRandomPosition(),
+    GameMathModule().generateRandomPositionX(),
+    GameMathModule().generateRandomPositionY(),
     2
 );
 
 const player1 = new Player(
     "Player 1",
     "black",
-    GameMathModule().generateRandomPosition(),
-    GameMathModule().generateRandomPosition(),
+    GameMathModule().generateRandomPositionX(),
+    GameMathModule().generateRandomPositionY(),
     1
 ); 
 
