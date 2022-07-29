@@ -268,9 +268,9 @@ function verifyPoints(player, fruit) {
 
     if (
         player.getPosX() + 5 >= fruit.getPosX() &&
-        player.getPosX() <= fruit.getPosX() + 10 &&
+        player.getPosX() - 4 <= fruit.getPosX() + 10 &&
         player.getPosY() + 5 >= fruit.getPosY() &&
-        player.getPosY() <= fruit.getPosY() + 10
+        player.getPosY() - 5<= fruit.getPosY() + 10
     ) {
         //increment score
         player.incrementScore();
