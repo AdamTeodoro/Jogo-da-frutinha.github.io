@@ -171,7 +171,7 @@ function Player(
  * @param {string} keyMoveUp - Botão que fará o player se mover para cima
  * @param {string} keyMoveDown - Botão que fará o player se mover para baixo
  */
- function ControllModule(player, keyMoveRight, keyMoveLeft, keyMoveUp, keyMoveDown) {
+ function ControlModule(player, keyMoveRight, keyMoveLeft, keyMoveUp, keyMoveDown) {
     try {
         return {
             [keyMoveRight]: () => {
@@ -331,8 +331,8 @@ const player1 = new Player(
 
 let fruit = new FruitModule(5000);
 
-const controlP2 = ControllModule(player2, 'd', 'a', 'w', 's');
-const controlP1 = ControllModule(player1, 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown');
+const controlP2 = ControlModule(player2, 'd', 'a', 'w', 's');
+const controlP1 = ControlModule(player1, 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown');
 
 console.log("Desenvolvido por: Adam Teodoro");
 
